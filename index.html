@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <form class="signup-card">
+      <h1>Sign Up</h1>
+
+      <div class="input-group">
+        <input type="text" id="name" required>
+        <label for="name">Full Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="username" required>
+        <label for="username">Username</label>
+      </div>
+
+      <div class="input-group password-group">
+        <input type="password" id="password" required>
+        <label for="password">Password</label>
+        <span class="toggle-password" id="togglePassword">
+          <i class="eye-icon"></i>
+        </span>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="college" required>
+        <label for="college">College</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="course" required>
+        <label for="course">Course</label>
+      </div>
+
+      <button type="submit" class="btn">Create Account</button>
+
+      <p class="login-text">Already registered? <a href="signin.html">Sign in</a></p>
+    </form>
+  </div>
+</body>
+</html>
