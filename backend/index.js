@@ -1,7 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const Applicants = require("./models/user")
-require('dotenv').config;
+
 
 const app = express()
 app.use(express.json())
@@ -9,7 +9,29 @@ app.use(express.json())
 connectDB();
 
 app.post("/api/register", async (req, res) => {
-   
+   const body = req.body;
+
+   try{
+        const newApplicant = new Applicants({
+            name : body.name,
+            username : body.username,
+            password : body.password,
+            college : body.college
+        })
+        await newApplicant.save();
+
+        res.json({
+            msg : "Applicant added successfully",
+            data : newApplicant
+        })
+
+   }catch(error){
+
+        res.json({
+            error : error.message
+        })
+
+   }
 })
 
 app.get('/', (req, res) =>{
