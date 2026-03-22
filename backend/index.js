@@ -2,10 +2,11 @@ const express = require("express");
 const connectDB = require("./config/db");
 const Applicants = require("./models/user");
 const { signinSchema, signupSchema } = require("./validators/authValidator");
-
+const cors = require('cors')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 connectDB();
 
 app.get('/', (req, res) =>{
