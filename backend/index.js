@@ -25,12 +25,24 @@ app.post("/api/register", async (req, res) => {
                 error : result.error.errors
             })
         }
+
+        const existingApplicant = await Applicants.findOne({
+            username : body.username
+        })
+
+        if (existingApplicant){
+            return res.json({
+                message : "User already exists"
+            })
+        }
+
         const newApplicant = new Applicants({
             name : body.name,
             username : body.username,
             password : body.password,
             college : body.college
         })
+
         await newApplicant.save();
 
         res.json({
@@ -74,7 +86,8 @@ app.post('/api/login', async(req, res) => {
         }
 
         res.json({
-            msg : "Login successfull"
+            msg : "Login successfull",
+            user : applicant
         })
     } catch(error){
         res.json({
